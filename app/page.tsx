@@ -263,7 +263,7 @@ export default function Home() {
                 </p>
                 <div className="flex flex-wrap gap-3 text-xs">
                   <a
-                    href="https://m.me/blondagebycandice"
+                    href="https://m.me/1030265353504464"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-[#cab69c]/70 bg-[#f9f3eb] px-4 py-2 font-medium text-[#3c2617] transition hover:bg-[#f1e3d4]"
