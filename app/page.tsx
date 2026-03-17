@@ -32,8 +32,8 @@ export default function Home() {
                   Professional Care, Personal Space.
                 </h1>
                 <p className="max-w-xl text-balance text-sm sm:text-base text-[#6f5a45]">
-                  Blondage & Co is a home-based salon created by Candice for
-                  clients who loves hair that feels as good as it looks.
+                  Blondage & Co is a home-based hair salon created by Candice
+                  for clients who loves hair that feels as good as it looks.
                 </p>
               </div>
 
