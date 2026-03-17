@@ -39,10 +39,6 @@ export function ContactForm() {
       <h2 className="text-sm font-medium uppercase tracking-[0.25em] text-[var(--accent)]">
         Get in touch
       </h2>
-      <p className="mt-2 text-xl font-semibold text-[var(--foreground)]">
-        Share a little about your hair and ideal appointment time, and Candice
-        will get back to you personally.
-      </p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-5">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -84,7 +80,7 @@ export function ContactForm() {
             htmlFor="phone"
             className="text-sm font-medium text-[var(--foreground)]/80"
           >
-            Phone (optional)
+            Phone
           </label>
           <input
             id="phone"
@@ -129,4 +125,3 @@ export function ContactForm() {
     </div>
   );
 }
-

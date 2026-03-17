@@ -8,8 +8,14 @@ export default function Home() {
     <main className="bg-[#f7f1e9] text-[#241a11]">
       {/* Top logo bar */}
       <div className="border-b border-black/5 bg-[#f7f1e9]/90 backdrop-blur">
-        <div className={`${SECTION_CLASSES} flex items-center justify-center py-4`}>
-          <img src="/blondage_logo.png" alt="Blondage & Co" className="h-64 w-auto" />
+        <div
+          className={`${SECTION_CLASSES} flex items-center justify-center py-4`}
+        >
+          <img
+            src="/blondage_logo.png"
+            alt="Blondage & Co"
+            className="h-64 w-auto"
+          />
         </div>
       </div>
 
@@ -26,9 +32,8 @@ export default function Home() {
                   Professional Care, Personal Space.
                 </h1>
                 <p className="max-w-xl text-balance text-sm sm:text-base text-[#6f5a45]">
-                  Blondage &amp; Co is a home-based salon created by Candice for
-                  clients who love effortless, lived-in colour, healthy blondes,
-                  and hair that feels as good as it looks.
+                  Blondage & Co is a home-based salon created by Candice for
+                  clients who loves hair that feels as good as it looks.
                 </p>
               </div>
 
@@ -46,17 +51,6 @@ export default function Home() {
                   View services
                 </a>
               </div>
-
-              <div className="flex flex-wrap items-center gap-4 pt-4 text-xs text-[#7c6750]">
-                <div className="flex items-center gap-2">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#cab69c]" />
-                  Specialising in modern blonding &amp; dimensional colour
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#cab69c]" />
-                  Located in a private, home-based studio
-                </div>
-              </div>
             </div>
 
             <div className="relative">
@@ -70,27 +64,29 @@ export default function Home() {
                         Blondage by Candice
                       </p>
                       <p className="mt-3 max-w-xs text-sm text-[#58422f]">
-                        Soft, seamless blondes, low-maintenance colour, and
-                        tailored cuts — all in a space that feels like a calm,
-                        warm afternoon.
+                        A bespoke hair experience in a serene and inviting home
+                        salon.
                       </p>
                     </div>
                   </div>
 
                   <div className="border-t border-white/70 bg-white/80 px-5 py-4">
                     <div className="flex items-center justify-between gap-4 text-xs text-[#7b634c]">
-                      <div>
+                      <div className="w-48">
                         <p className="font-semibold text-[#3c2617]">
                           Perfect for:
                         </p>
-                        <p>Blonding · Balayage · Lived-in colour</p>
+                        <p>
+                          Blondes · Balayage · Toners · Global Colours · Keratin
+                          Treatments
+                        </p>
                       </div>
                       <div className="flex flex-col items-center text-center">
                         <p className="text-[0.65rem] uppercase tracking-[0.24em] text-[#b29578]">
                           Home-based studio
                         </p>
                         <p className="mt-1 rounded-full bg-[#f0e0cf] px-3 py-1 text-[0.65rem] font-medium text-[#3c2617]">
-                          One-on-one appointments only
+                          By appointments only
                         </p>
                       </div>
                     </div>
@@ -108,22 +104,20 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)]">
             <div className="space-y-4">
               <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a48663]">
-                Meet Candice
+                Meet Blondage
               </h2>
               <p className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
                 Thoughtful hair, tailored to how you actually live in it.
               </p>
               <p className="max-w-xl text-sm sm:text-base text-[#6f5a45]">
-                Candice believes great hair should feel effortless — soft,
-                dimensional colour that grows out beautifully, with cuts that
-                work with your natural texture. In a private, home-based space,
-                each appointment is calm, unhurried, and completely
-                one-on-one.
+                Candice believes great hair should feel effortless - soft,
+                professional colour that grows out beautifully, with cuts that
+                work for you.
               </p>
               <p className="max-w-xl text-sm sm:text-base text-[#6f5a45]">
-                Whether you&apos;re maintaining your signature blonde, easing
-                into lighter tones, or refreshing your cut, you&apos;ll leave
-                with hair that fits your lifestyle and feels like you.
+                Whether you're maintaining your signature blonde, easing into
+                lighter tones, or refreshing your cut, you'll leave with hair
+                that fits your lifestyle and feels like you.
               </p>
             </div>
             <div className="space-y-4">
@@ -133,27 +127,21 @@ export default function Home() {
                     Specialties
                   </p>
                   <ul className="mt-3 space-y-1.5 text-sm text-[#5a4632]">
-                    <li>• Lived-in blondes &amp; balayage</li>
-                    <li>• Soft, dimensional colour</li>
-                    <li>• Glossing &amp; toning services</li>
+                    <li>• Blondes &amp; balayage</li>
+                    <li>• Global colour &amp; glossing</li>
+                    <li>• Keratin Smoothing Treatment</li>
                   </ul>
                 </div>
                 <div className="rounded-2xl bg-[#2f2318] p-4 text-[#f7f1e9] shadow-sm">
                   <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#cab69c]">
-                    Experience
+                    Clientele
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-[#f3e3d0]">
-                    Candice has worked with a range of blonde clients and hair
-                    types, with a focus on keeping the hair as healthy as it is
-                    beautiful.
+                    At Blondage we are welcoming new clients while continuing to
+                    nurture a loyal and long-standing clientele.
                   </p>
                 </div>
               </div>
-              <p className="text-xs text-[#8a7157]">
-                New clients are welcome. Share a little about your hair in the
-                enquiry form below and Candice will recommend the best service
-                for your first visit.
-              </p>
             </div>
           </div>
         </div>
@@ -168,7 +156,8 @@ export default function Home() {
                 Services
               </h2>
               <p className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
-                Designed for soft blondes &amp; easy maintenance.
+                Designed for you with easy <br />
+                maintenance in mind.
               </p>
             </div>
             <p className="max-w-md text-xs sm:text-sm text-[#7c6750]">
@@ -197,8 +186,8 @@ export default function Home() {
               <div className="space-y-2.5">
                 <h3 className="text-sm font-semibold">Colour &amp; Toner</h3>
                 <p className="text-xs text-[#f1dfcb]">
-                  Perfect for refreshing tone, adding gloss, or shifting your
-                  shade slightly warmer or cooler.
+                  Perfect for managing regrowth, refreshing tone, adding gloss,
+                  or shifting your shade slightly warmer or cooler.
                 </p>
               </div>
               <p className="mt-4 text-xs font-medium uppercase tracking-[0.18em] text-[#cab69c]">
@@ -212,8 +201,8 @@ export default function Home() {
                   Cut, Style &amp; Treatment
                 </h3>
                 <p className="text-xs text-[#7c6750]">
-                  Shape-refreshing cuts, blow-dries and nourishing in-salon
-                  treatments to keep your blonde feeling soft and healthy.
+                  Shape-refreshing cuts, styling and nourishing in salon
+                  treatments to keep your hair feeling soft and healthy.
                 </p>
               </div>
               <p className="mt-4 text-xs font-medium uppercase tracking-[0.18em] text-[#b29578]">
@@ -244,26 +233,6 @@ export default function Home() {
                 is taken care of.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="col-span-2 rounded-3xl bg-[radial-gradient(circle_at_0_0,#fff5e8,transparent_60%),radial-gradient(circle_at_100%_100%,#d9bda0,transparent_55%)] p-4 shadow-md ring-1 ring-black/5">
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#b29578]">
-                  For the blondes
-                </p>
-                <p className="mt-2 text-sm text-[#4a3726]">
-                  From bright, creamy blondes to soft, sandy tones — the focus
-                  is always on keeping the hair healthy and touchable.
-                </p>
-              </div>
-              <div className="flex flex-col justify-between rounded-3xl bg-[#2f2318] p-4 text-[#f7f1e9] shadow-md">
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#cab69c]">
-                  Little details
-                </p>
-                <p className="mt-2 text-xs text-[#f1dfcb]">
-                  Refreshments, curated haircare recommendations, and a
-                  one-on-one experience every time.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -290,7 +259,7 @@ export default function Home() {
 
               <div className="space-y-3 rounded-2xl bg-white/70 p-4 shadow-sm ring-1 ring-black/5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#b29578]">
-                  Prefer social?
+                  Or message on social
                 </p>
                 <div className="flex flex-wrap gap-3 text-xs">
                   <a
