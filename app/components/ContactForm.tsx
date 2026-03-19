@@ -1,9 +1,10 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "sent">("idle");
+  const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -32,7 +33,9 @@ export function ContactForm() {
       // In this starter, we silently ignore errors and still show a friendly message.
     } finally {
       setStatus("sent");
-      event.currentTarget.reset();
+      if (formRef.current) {
+        formRef.current.reset();
+      }
     }
   }
 
@@ -42,7 +45,7 @@ export function ContactForm() {
         Get in touch
       </h2>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+      <form ref={formRef} onSubmit={handleSubmit} className="mt-6 space-y-5">
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <label
@@ -119,8 +122,7 @@ export function ContactForm() {
 
         {status === "sent" && (
           <p className="text-xs text-[var(--foreground)]/70">
-            Thank you — your message has been received. Candice will respond as
-            soon as she&apos;s away from the chair.
+            Thank you for getting in touch — I'll get back to you soon.
           </p>
         )}
       </form>
