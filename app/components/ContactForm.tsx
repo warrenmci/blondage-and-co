@@ -12,20 +12,22 @@ export function ContactForm() {
     const formData = new FormData(event.currentTarget);
 
     try {
-      // await fetch("/api/contact", {
-      //   method: "POST",
-      //   body: JSON.stringify({
-      //     name: formData.get("name"),
-      //     email: formData.get("email"),
-      //     phone: formData.get("phone"),
-      //     message: formData.get("message"),
-      //   }),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-      alert("Form submitted");
-      console.log("Form data:", Object.fromEntries(formData));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          message: formData.get("message"),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
     } catch {
       // In this starter, we silently ignore errors and still show a friendly message.
     } finally {
