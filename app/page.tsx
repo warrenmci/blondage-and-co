@@ -25,7 +25,7 @@ export default function Home() {
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             <div className="space-y-6">
               <p className="inline-flex items-center rounded-full border border-black/5 bg-white/70 px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] text-[#7c6750] shadow-sm backdrop-blur">
-                Home-based hair studio · By appointment
+                Home-based hair studio · Hamilton, NZ
               </p>
               <div className="space-y-4">
                 <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
@@ -65,7 +65,7 @@ export default function Home() {
                       </p>
                       <p className="mt-3 max-w-xs text-sm text-[#58422f]">
                         A bespoke hair experience in a serene and inviting home
-                        salon.
+                        salon based in Rototuna, Hamilton.
                       </p>
                     </div>
                   </div>
@@ -83,7 +83,7 @@ export default function Home() {
                       </div>
                       <div className="flex flex-col items-center text-center">
                         <p className="text-[0.65rem] uppercase tracking-[0.24em] text-[#b29578]">
-                          Home-based studio
+                          Home based studio
                         </p>
                         <p className="mt-1 rounded-full bg-[#f0e0cf] px-3 py-1 text-[0.65rem] font-medium text-[#3c2617]">
                           By appointments only
@@ -104,7 +104,7 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)]">
             <div className="space-y-4">
               <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a48663]">
-                Meet Blondage
+                Meet Blondage & Co
               </h2>
               <p className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
                 Thoughtful hair, tailored to how you actually live in it.
@@ -141,6 +141,19 @@ export default function Home() {
                     nurture a loyal and long-standing clientele.
                   </p>
                 </div>
+              </div>
+              <div className="flex items-center justify-between rounded-2xl bg-white/80 p-3 shadow-sm ring-1 ring-black/5">
+                <p className="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-[#b29578]">
+                  Location
+                </p>
+                <a
+                  href="https://maps.google.com/?q=Drumfearn+Place+Hamilton+New+Zealand"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm font-medium text-[#5a4632] underline-offset-2 transition hover:underline"
+                >
+                  Rototuna, Hamilton, New Zealand
+                </a>
               </div>
             </div>
           </div>
@@ -254,7 +267,7 @@ export default function Home() {
               <p className="max-w-md text-sm sm:text-base text-[#6f5a45]">
                 Share a little about your current hair, goals, and ideal days or
                 times. Candice will be in touch via your preferred contact
-                method to confirm details and suggest the best first visit.
+                method to confirm details to confirm your next appointment.
               </p>
 
               <div className="space-y-3 rounded-2xl bg-white/70 p-4 shadow-sm ring-1 ring-black/5">
@@ -299,7 +312,7 @@ export default function Home() {
           className={`${SECTION_CLASSES} flex flex-col items-center justify-between gap-4 sm:flex-row`}
         >
           <p className="text-xs text-[#8a7157]">
-            © {new Date().getFullYear()} Blondage & Co
+            © {new Date().getFullYear()} Blondage & Co — Hamilton, NZ
           </p>
           <div className="flex items-center gap-4">
             <a

@@ -13,9 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Blondage & Co | Home-based Hair Studio",
+  title:
+    "Blondage & Co | Hair Salon Hamilton | Home-based Hair Studio Rototuna",
   description:
-    "Blondage & Co is a warm, home-based hair studio specialising in modern blondes, lived-in colour, and effortless cuts in a calm, welcoming space.",
+    "Blondage & Co is a warm, home-based hair studio in Rototuna, Hamilton NZ. Specialising in modern blondes, balayage, lived-in colour, and effortless cuts. Book your appointment today.",
+  keywords: [
+    "hair salon Hamilton",
+    "hairdresser Rototuna",
+    "blonde hair specialist Hamilton NZ",
+    "balayage Hamilton",
+    "home based hair studio Waikato",
+    "home based hair studio in Hamilton",
+    "home based hair studio near me",
+    "hair colour Rototuna",
+  ],
+  openGraph: {
+    title: "Blondage & Co | Hair Salon Hamilton",
+    description:
+      "Home-based hair studio in Rototuna, Hamilton NZ. Specialising in blondes, balayage and effortless cuts.",
+    locale: "en_NZ",
+  },
 };
 
 export default function RootLayout({
