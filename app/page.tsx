@@ -272,13 +272,13 @@ export default function Home() {
                     Facebook Messenger
                   </a>
                   <a
-                    href="https://www.instagram.com/blondagebycandice"
+                    href="https://www.instagram.com/blondageandco"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-[#cab69c]/70 bg-[#f9f3eb] px-4 py-2 font-medium text-[#3c2617] transition hover:bg-[#f1e3d4]"
                   >
                     <span className="h-2 w-2 rounded-full bg-[#cab69c]" />
-                    Instagram · @blondagebycandice
+                    Instagram · @blondageandco
                   </a>
                 </div>
                 <p className="text-[0.7rem] text-[#8a7157]">
@@ -292,6 +292,59 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-black/5 bg-[#f2e7db] py-8">
+        <div
+          className={`${SECTION_CLASSES} flex flex-col items-center justify-between gap-4 sm:flex-row`}
+        >
+          <p className="text-xs text-[#8a7157]">
+            © {new Date().getFullYear()} Blondage & Co
+          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.instagram.com/blondageandco"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#5a4632] transition hover:text-[#3c2617]"
+              aria-label="Follow us on Instagram"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/blondageandco"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#5a4632] transition hover:text-[#3c2617]"
+              aria-label="Message us on Facebook"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
