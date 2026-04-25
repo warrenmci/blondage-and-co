@@ -65,7 +65,7 @@ export default function Home() {
                       </p>
                       <p className="mt-3 max-w-xs text-sm text-[#58422f]">
                         A bespoke hair experience in a serene and inviting home
-                        salon based in Rototuna, Hamilton.
+                        salon based in Puketaha, Hamilton.
                       </p>
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function Home() {
                   rel="noreferrer"
                   className="text-sm font-medium text-[#5a4632] underline-offset-2 transition hover:underline"
                 >
-                  Rototuna, Hamilton, New Zealand
+                  Puketaha, Hamilton, New Zealand
                 </a>
               </div>
             </div>

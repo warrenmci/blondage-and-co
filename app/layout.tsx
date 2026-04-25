@@ -15,23 +15,23 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title:
-    "Blondage & Co | Hair Salon Hamilton | Home-based Hair Studio Rototuna",
+    "Blondage & Co | Hair Salon Hamilton | Home-based Hair Studio Puketaha",
   description:
-    "Blondage & Co is a warm, home-based hair studio in Rototuna, Hamilton NZ. Specialising in modern blondes, balayage, lived-in colour, and effortless cuts. Book your appointment today.",
+    "Blondage & Co is a warm, home-based hair studio in Puketaha, Hamilton NZ. Specialising in modern blondes, balayage, lived-in colour, and effortless cuts. Book your appointment today.",
   keywords: [
     "hair salon Hamilton",
-    "hairdresser Rototuna",
+    "hairdresser Puketaha",
     "blonde hair specialist Hamilton NZ",
     "balayage Hamilton",
     "home based hair studio Waikato",
     "home based hair studio in Hamilton",
     "home based hair studio near me",
-    "hair colour Rototuna",
+    "hair colour Puketaha",
   ],
   openGraph: {
     title: "Blondage & Co | Hair Salon Hamilton",
     description:
-      "Home-based hair studio in Rototuna, Hamilton NZ. Specialising in blondes, balayage and effortless cuts.",
+      "Home-based hair studio in Puketaha, Hamilton NZ. Specialising in blondes, balayage and effortless cuts.",
     locale: "en_NZ",
   },
 };
