@@ -1,4 +1,5 @@
 import { ContactForm } from "./components/ContactForm";
+import { GoogleReviews } from "./components/GoogleReviews";
 
 const SECTION_CLASSES =
   "mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10 xl:max-w-6xl";
@@ -147,7 +148,7 @@ export default function Home() {
                   Location
                 </p>
                 <a
-                  href="https://maps.google.com/?q=Drumfearn+Place+Hamilton+New+Zealand"
+                  href="https://maps.google.com/?q=184+Sainsbury+Rd+Puketaha+Hamilton+New+Zealand"
                   target="_blank"
                   rel="noreferrer"
                   className="text-sm font-medium text-[#5a4632] underline-offset-2 transition hover:underline"
@@ -249,6 +250,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Reviews */}
+      <GoogleReviews />
 
       {/* Contact */}
       <section
