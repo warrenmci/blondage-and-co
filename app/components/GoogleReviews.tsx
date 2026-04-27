@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 interface Review {
   name: string;
@@ -45,75 +45,100 @@ function getTimeAgo(dateString: string): string {
   const diffMs = now.getTime() - date.getTime();
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-  if (diffDays < 7) {
-    const weeks = Math.max(1, Math.floor(diffDays / 7));
-    return `${weeks} week${weeks > 1 ? "s" : ""} ago`;
-  } else if (diffDays < 30) {
-    const weeks = Math.floor(diffDays / 7);
-    return `${weeks} week${weeks > 1 ? "s" : ""} ago`;
-  } else if (diffDays < 365) {
-    const months = Math.floor(diffDays / 30);
-    return `${months} month${months > 1 ? "s" : ""} ago`;
-  } else {
-    const years = Math.floor(diffDays / 365);
-    return `${years} year${years > 1 ? "s" : ""} ago`;
-  }
+  if (diffDays < 7)
+    return `${Math.max(1, Math.floor(diffDays / 7))} week${Math.floor(diffDays / 7) > 1 ? "s" : ""} ago`;
+  if (diffDays < 30)
+    return `${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? "s" : ""} ago`;
+  if (diffDays < 365)
+    return `${Math.floor(diffDays / 30)} month${Math.floor(diffDays / 30) > 1 ? "s" : ""} ago`;
+  return `${Math.floor(diffDays / 365)} year${Math.floor(diffDays / 365) > 1 ? "s" : ""} ago`;
 }
 
 export function GoogleReviews() {
   const [data, setData] = useState<ReviewsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const getCardWidth = () => {
-    const container = scrollContainerRef.current;
-    if (!container) return 350;
-    const card = container.querySelector("article");
-    return card?.offsetWidth || 350;
-  };
+  const reviews = data?.reviews || [];
+  const infiniteReviews = [...reviews, ...reviews]; // duplicate once for seamless loop
 
   const scroll = (direction: "left" | "right") => {
-    if (isScrolling) return;
+    if (isScrolling || reviews.length === 0) return;
+
     const container = scrollContainerRef.current;
     if (!container) return;
 
     setIsScrolling(true);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
-    const cardWidth = getCardWidth();
-    const gap = 16; // gap-4 = 1rem = 16px
-    const scrollAmount = cardWidth + gap;
-    const maxScroll = container.scrollWidth - container.clientWidth;
+    const halfWidth = container.scrollWidth / 2;
+    const cardPlusGap = halfWidth / reviews.length;
 
-    const scrollToPosition = (position: number) => {
-      container.scrollTo({
-        left: position,
-        behavior: "smooth",
-      });
-      setTimeout(() => setIsScrolling(false), 500);
-    };
+    // Round current position to nearest card slot to prevent drift
+    const currentSlot = Math.round(container.scrollLeft / cardPlusGap);
+    const baseScroll = currentSlot * cardPlusGap;
 
     if (direction === "right") {
-      // Check if we're at or near the end
-      if (container.scrollLeft >= maxScroll - 1) {
-        // Jump to start (with animation off) then scroll right
-        container.scrollTo({ left: 0 });
-        setTimeout(() => scrollToPosition(scrollAmount), 50);
-      } else {
-        scrollToPosition(container.scrollLeft + scrollAmount);
+      const targetSlot = currentSlot + 1;
+
+      // If crossing into second copy, wrap to first copy
+      if (targetSlot >= reviews.length) {
+        container.scrollTo({ left: 0, behavior: "instant" as ScrollBehavior });
+        setTimeout(() => {
+          container.scrollTo({ left: cardPlusGap, behavior: "smooth" });
+          setCurrentIndex((prev) => (prev + 1) % reviews.length);
+          timeoutRef.current = setTimeout(() => setIsScrolling(false), 550);
+        }, 50);
+        return;
       }
+
+      container.scrollTo({
+        left: targetSlot * cardPlusGap,
+        behavior: "smooth",
+      });
+      setCurrentIndex((prev) => (prev + 1) % reviews.length);
     } else {
-      // Check if we're at the start
-      if (container.scrollLeft <= 1) {
-        // Jump to end then scroll left
-        container.scrollTo({ left: maxScroll });
-        setTimeout(() => scrollToPosition(maxScroll - scrollAmount), 50);
-      } else {
-        scrollToPosition(container.scrollLeft - scrollAmount);
+      const targetSlot = currentSlot - 1;
+
+      // If going before first slot, wrap to end of first copy
+      if (targetSlot < 0) {
+        container.scrollTo({
+          left: halfWidth,
+          behavior: "instant" as ScrollBehavior,
+        });
+        setTimeout(() => {
+          container.scrollTo({
+            left: halfWidth - cardPlusGap,
+            behavior: "smooth",
+          });
+          setCurrentIndex(
+            (prev) => (prev - 1 + reviews.length) % reviews.length,
+          );
+          timeoutRef.current = setTimeout(() => setIsScrolling(false), 550);
+        }, 50);
+        return;
       }
+
+      container.scrollTo({
+        left: targetSlot * cardPlusGap,
+        behavior: "smooth",
+      });
+      setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
     }
+
+    timeoutRef.current = setTimeout(() => setIsScrolling(false), 550);
   };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     fetch("/api/reviews")
@@ -121,7 +146,7 @@ export function GoogleReviews() {
         if (!res.ok) throw new Error("Failed to load reviews");
         return res.json();
       })
-      .then((result) => {
+      .then((result: ReviewsData) => {
         setData(result);
         setLoading(false);
       })
@@ -130,6 +155,16 @@ export function GoogleReviews() {
         setLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    if (!data?.reviews.length) return;
+
+    const interval = setInterval(() => {
+      scroll("right");
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [data]);
 
   if (loading) {
     return (
@@ -143,16 +178,12 @@ export function GoogleReviews() {
     );
   }
 
-  if (error || !data?.reviews?.length) {
-    return null;
-  }
-
-  const displayReviews = data.reviews;
+  if (error || reviews.length === 0) return null;
 
   return (
     <section id="reviews" className="border-y border-black/5 bg-[#f2e7db]">
       <div className="mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10 xl:max-w-6xl py-12 sm:py-14 lg:py-16">
-        {/* Section header */}
+        {/* Header - unchanged */}
         <div className="mb-8 text-center">
           <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-[#a48663]">
             What Clients Say
@@ -160,14 +191,14 @@ export function GoogleReviews() {
           <div className="mt-4 flex items-center justify-center gap-4">
             <div className="text-center">
               <p className="text-4xl font-semibold text-[#241a11]">
-                {data.averageRating.toFixed(1)}
+                {data!.averageRating.toFixed(1)}
               </p>
-              <StarRating rating={Math.round(data.averageRating)} />
+              <StarRating rating={Math.round(data!.averageRating)} />
             </div>
             <div className="h-10 w-px bg-black/10" />
             <div className="text-left">
               <p className="text-sm font-medium text-[#5a4632]">
-                Based on {data.totalReviews} Google reviews
+                Based on {data!.totalReviews} Google reviews
               </p>
               <a
                 href="https://www.google.com/search?q=blondage+and+co&rlz=1C1MMCH_enNZ1068NZ1068&oq=blondage+and+co&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg8MgYIAhBFGDwyBggDEEUYPNIBCDQ0MzVqMGo3qAIAsAIA"
@@ -181,7 +212,7 @@ export function GoogleReviews() {
           </div>
         </div>
 
-        {/* Carousel container */}
+        {/* Carousel */}
         <div className="relative">
           <button
             onClick={() => scroll("left")}
@@ -202,15 +233,16 @@ export function GoogleReviews() {
               />
             </svg>
           </button>
+
           <div
             ref={scrollContainerRef}
             className="overflow-x-auto scrollbar-hide scroll-smooth py-2"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <div className="flex gap-4 sm:gap-5">
-              {displayReviews.map((review, index) => (
+              {infiniteReviews.map((review, index) => (
                 <article
-                  key={`${index}-${review.name}`}
+                  key={`review-${index}`}
                   className="w-[85vw] sm:w-[342px] rounded-2xl bg-white/90 p-4 sm:p-5 shadow-sm ring-1 ring-black/5 flex-shrink-0"
                 >
                   <div className="flex items-start justify-between">
@@ -228,12 +260,13 @@ export function GoogleReviews() {
                     {getTimeAgo(review.timestamp)}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-[#5a4632] line-clamp-4">
-                    &ldquo;{review.text}&rdquo;
+                    “{review.text}”
                   </p>
                 </article>
               ))}
             </div>
           </div>
+
           <button
             onClick={() => scroll("right")}
             className="absolute -right-12 sm:-right-14 top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white shadow-md ring-1 ring-black/10 transition hover:bg-[#f2e7db]"
@@ -255,7 +288,6 @@ export function GoogleReviews() {
           </button>
         </div>
 
-        {/* Google attribution - required by Google */}
         <div className="mt-6 flex items-center justify-center gap-2 text-xs text-[#8a7157]">
           <img
             src="https://www.gstatic.com/localredesign/images/static_map_lightblue.png"
