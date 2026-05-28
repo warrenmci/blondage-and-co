@@ -1,5 +1,6 @@
 import { ContactForm } from "./components/ContactForm";
 import { GoogleReviews } from "./components/GoogleReviews";
+import InstagramFeed from "./components/InstagramFeed";
 
 const SECTION_CLASSES =
   "mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10 xl:max-w-6xl";
@@ -160,6 +161,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <InstagramFeed limit={12} className="px-4 py-16 max-w-5xl mx-auto" />
 
       {/* Services */}
       <section id="services">
