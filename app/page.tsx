@@ -162,7 +162,18 @@ export default function Home() {
         </div>
       </section>
 
-      <InstagramFeed limit={12} className="px-4 py-16 max-w-5xl mx-auto" />
+      <section id="about" className="border-y border-black/5 bg-[#f6ede3]/70">
+        <div className={`${SECTION_CLASSES} py-12 sm:py-14 lg:py-16`}>
+          {/* Mobile: 6 posts */}
+          <div className="sm:hidden">
+            <InstagramFeed limit={6} className="mx-auto w-full" />
+          </div>
+          {/* Tablet+: 12 posts */}
+          <div className="hidden sm:block">
+            <InstagramFeed limit={12} className="mx-auto w-full" />
+          </div>
+        </div>
+      </section>
 
       {/* Services */}
       <section id="services">
@@ -319,7 +330,7 @@ export default function Home() {
           className={`${SECTION_CLASSES} flex flex-col items-center justify-between gap-4 sm:flex-row`}
         >
           <p className="text-xs text-[#8a7157]">
-            © {new Date().getFullYear()} Blondage & Co — Hamilton, NZ
+            © {new Date().getFullYear()} Blondage & Co | Hamilton, NZ
           </p>
           <div className="flex items-center gap-4">
             <a
