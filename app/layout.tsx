@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title:
     "Blondage & Co | Hair Salon Hamilton | Home-based Hair Studio Puketaha",
   description:
-    "Blondage & Co is a warm, home-based hair studio in Puketaha, Hamilton NZ. Specialising in modern blondes, balayage, lived-in colour, and effortless cuts. Book your appointment today.",
+    "Blondage & Co is a warm, home-based hair studio in Puketaha, Hamilton NZ. Specialising in modern blondes, balayage, lived-in colour and effortless cuts. Book your appointment today.",
   keywords: [
     "hair salon Hamilton",
     "hairdresser Puketaha",

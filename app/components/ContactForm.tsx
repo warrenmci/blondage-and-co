@@ -108,7 +108,7 @@ export function ContactForm() {
             rows={4}
             required
             className="w-full resize-none rounded-3xl border border-black/5 bg-[#f9f4ed] px-4 py-3 text-sm outline-none transition focus:border-[var(--accent)] focus:bg-white focus:ring-2 focus:ring-[var(--accent)]/40"
-            placeholder="Tell us about your current hair, dream result, and preferred days/times."
+            placeholder="Tell us about your current hair, dream result and preferred days/times."
           />
         </div>
 
@@ -122,7 +122,7 @@ export function ContactForm() {
 
         {status === "sent" && (
           <p className="text-xs text-[var(--foreground)]/70">
-            Thank you for getting in touch — I'll get back to you soon.
+            Thank you for getting in touch. I'll get back to you soon.
           </p>
         )}
       </form>

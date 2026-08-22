@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     // Validate required fields
     if (!name || !email || !message) {
       return NextResponse.json(
-        { error: "Name, email, and message are required" },
+        { error: "Name, email and message are required" },
         { status: 400 }
       );
     }

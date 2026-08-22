@@ -250,11 +250,11 @@ export default function Home() {
                 The vibe
               </h2>
               <p className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                Soft light, warm tones, and space to exhale.
+                Soft light, warm tones and space to exhale.
               </p>
               <p className="max-w-md text-sm sm:text-base text-[#6f5a45]">
-                The studio is intentionally small and calm — think soft music,
-                warm neutrals, and a cosy chair you won&apos;t want to leave.
+                The studio is intentionally small and calm. Think soft music,
+                warm neutrals and a cosy chair you won&apos;t want to leave.
               </p>
               <p className="max-w-md text-sm sm:text-base text-[#6f5a45]">
                 It&apos;s a space designed for you to slow down while your hair
@@ -283,7 +283,7 @@ export default function Home() {
                 Ready for hair that feels like you?
               </p>
               <p className="max-w-md text-sm sm:text-base text-[#6f5a45]">
-                Share a little about your current hair, goals, and ideal days or
+                Share a little about your current hair, goals and ideal days or
                 times. Candice will be in touch via your preferred contact
                 method to confirm details to confirm your next appointment.
               </p>
@@ -313,7 +313,7 @@ export default function Home() {
                   </a>
                 </div>
                 <p className="text-[0.7rem] text-[#8a7157]">
-                  Candice manages all messages personally — there is no online
+                  Candice manages all messages personally. There is no online
                   booking system.
                 </p>
               </div>
