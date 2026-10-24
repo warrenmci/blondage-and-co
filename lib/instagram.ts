@@ -28,7 +28,8 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN!,
 })
 
-const TOKEN_KEY = 'instagram:access_token'
+// Namespaced so this site doesn't share a token with other projects on the same Redis
+const TOKEN_KEY = 'blondage:instagram:access_token'
 
 async function getToken(): Promise<string> {
   const stored = await redis.get<string>(TOKEN_KEY)
