@@ -48,7 +48,10 @@ export async function getInstagramPosts(limit = 12): Promise<InstagramPost[]> {
   const url = `${BASE_URL}/me/media?fields=${FIELDS}&limit=${limit}&access_token=${token}`
 
   const res = await fetch(url, {
-    next: { revalidate: 604800, tags: ['instagram'] }, // Re-fetch images once a week
+    // media_url values are signed CDN links that expire after a few days (the
+    // `oe` param), so a weekly refetch left the page pointing at dead URLs.
+    // Refetch daily so the links are always fresh.
+    next: { revalidate: 86400, tags: ['instagram'] },
   })
 
   if (!res.ok) {

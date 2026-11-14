@@ -19,6 +19,12 @@ function PostCard({ post }: { post: InstagramPost }) {
         src={imageUrl}
         alt={post.caption ?? "Blondage & Co Instagram post"}
         fill
+        // Instagram's CDN already serves compressed, right-sized JPEGs, and its
+        // URLs are signed and rotate on every API fetch. Optimizing them through
+        // Vercel created a fresh set of transformations + cache writes each
+        // refresh, burning the Hobby Image Optimization quota (and returning
+        // 402s once it ran out). Serve them straight from Instagram instead.
+        unoptimized
         className="object-cover transition-transform duration-300 group-hover:scale-105"
       />
 
